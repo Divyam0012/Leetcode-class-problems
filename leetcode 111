@@ -1,0 +1,15 @@
+class Solution {
+    public int dfs(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+
+        return (left == 0 || right == 0) ? left + right + 1 : 1 + Math.min(left, right);
+    }
+
+    public int minDepth(TreeNode root) {
+        return dfs(root);
+    }
+}
